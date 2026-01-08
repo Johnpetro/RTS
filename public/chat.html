@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat - Room</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <div class="room-info">
+                <h1 id="roomName">Loading...</h1>
+                <div class="room-details">
+                    <span id="roomCode">Room Code: -</span>
+                    <span id="roomExpiry">Expires: -</span>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button id="copyRoomLink" class="btn btn-outline">Copy Room Link</button>
+                <button id="leaveRoom" class="btn btn-secondary">Leave Room</button>
+            </div>
+        </header>
+
+        <main class="chat-main">
+            <div id="messagesContainer" class="messages-container">
+                <div id="messagesList" class="messages-list">
+                    <!-- Messages will be loaded here -->
+                </div>
+            </div>
+
+            <div class="message-input-container">
+                <form id="messageForm" class="message-form">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Type your message..." 
+                        maxlength="500"
+                        required
+                    >
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+        </main>
+
+        <div id="connectionStatus" class="connection-status">
+            <span class="status-indicator"></span>
+            <span class="status-text">Connecting...</span>
+        </div>
+    </div>
+
+    <!-- Room Expired Modal -->
+    <div id="expiredModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3>Room Expired</h3>
+            <p>This room has expired and is no longer available.</p>
+            <button id="goHome" class="btn btn-primary">Go to Home</button>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
